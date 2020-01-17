@@ -1,0 +1,43 @@
+package se;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class T
+{
+	public static void main(String[] args)
+	{
+		System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");  
+        
+            
+   WebDriver driver=new ChromeDriver();  
+     
+      
+   driver.navigate().to("http://demo.opencart.com");  
+     
+   
+     driver.manage().window().maximize();  
+     
+
+   driver.findElement(By.xpath("/html/body/div[2]/div/div/div[2]/div[1]/div/div[3]/button[1]/span")).click();
+   driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul/li[4]/a/span")).click();
+   System.out.println("The dollar currency is:");
+   String x = driver.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/div/table/tbody/tr[4]/td[2]")).getText();
+   System.out.print(x);
+   System.out.println("The inr currency of the product is :");
+   String z=x.substring(1);
+   double result = Double.parseDouble(z);
+   double inr = result*75;
+   System.out.print(inr);
+   System.out.println("The Euro currency of the product is :");
+   double euro = result*0.90;
+   System.out.print(euro);
+   System.out.println("The pound currency of the product is :");
+   double pound = result*0.77;
+   System.out.print(pound);
+   
+	}
+	
+
+}
